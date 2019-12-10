@@ -9,7 +9,8 @@ public:
   String buffer;
   
   SerialManager()
-  { 
+  {
+    addCallbackMessageReceived(&SerialManager::defaultCallback); 
   }
 
   void update()
@@ -37,22 +38,31 @@ public:
   void parseBuffer()
   {
     int commaIndex = buffer.indexOf(',');
-    //  Search for the next comma just after the first
     int secondCommaIndex = buffer.indexOf(',', commaIndex + 1);
-    String firstValue = buffer.substring(0, commaIndex);
-    String secondValue = buffer.substring(commaIndex + 1, secondCommaIndex);
-    String thirdValue = buffer.substring(secondCommaIndex + 1); // To the end of the string
-    
-    float p1 = secondValue.toFloat();
-    float p2 = thirdValue.toFloat();
-    //Serial.println("Got : "+String(firstValue)+" / "+String(p1)+" / "+String(p2));
-    if(firstValue.equals("p"))
-    {
-      //setMotorPos(0, p1);
-      //setMotorPos(1, p2);
-    }
+    String cc = buffer.substring(0, commaIndex);
+    String v1 = buffer.substring(commaIndex + 1, secondCommaIndex);
+    String v2 = buffer.substring(secondCommaIndex + 1); // To the end of the string
+
+    char command = v1.charAt(0);
+
+    onMessageReceived(command, v1, v2);
+
   }
-}
+
+
+   typedef void(*onEvent)(char, String, String);
+    void (*onMessageReceived) (char command, String val1, String val2);
+
+    void addCallbackMessageReceived (onEvent func) {
+      onMessageReceived = func;
+    }
+  
+    static void defaultCallback(char command, String val1, String val2)
+    {
+      //nothing
+    }
+  
+};
 
 
 #endif

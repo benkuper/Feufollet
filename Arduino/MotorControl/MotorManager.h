@@ -24,6 +24,17 @@ public:
     for(int i=0;i<NUM_MOTORS;i++) motors[i].update();
   }
 
+
+  void setAcceleration(float value)
+  {
+    for(int i=0;i<NUM_MOTORS;i++) motors[i].setAcceleration(value);
+  }
+
+  void setMaxSpeed(float value)
+  {
+    for(int i=0;i<NUM_MOTORS;i++) motors[i].setMaxSpeed(value);
+  }
+
 #if USE_OSC
   bool handleMessage(OSCMessage &msg)
   {
@@ -35,7 +46,7 @@ public:
     {
       if(msg.isFloat(0))
       {
-        for(int i=0;i<NUM_MOTORS;i++) motors[i].setAcceleration(msg.getFloat(0));
+       setAcceleration(msg.getFloat(0));
       }else
       {
         DBG("MotorManager :: Acceleration message 1st argument should be float");
@@ -44,7 +55,7 @@ public:
     {
       if(msg.isFloat(0))
       {
-        for(int i=0;i<NUM_MOTORS;i++) motors[i].setMaxSpeed(msg.getFloat(0));
+        setMaxSpeed(msg.getFloat(0));
       }else
       {
         DBG("MotorManager :: Max speed message 1st argument should be float");
@@ -76,6 +87,45 @@ public:
       DBG("Message not handled : "+ String(addr));
     }
     
+  }
+#endif
+
+#if USE_SERIAL
+  bool handleSerialMessage(char command, String val1, String val2)
+  {
+    switch(command)
+    {
+      case 'a':
+      setAcceleration(val1.toFloat());
+      break;
+
+      case 's':
+      setMaxSpeed(val1.toFloat());
+      break;
+
+     case 'p':
+     {
+      int index = val1.toInt();
+      if(index >= 0 && index < NUM_MOTORS) motors[index].setTargetPosition(val2.toFloat());
+     }
+      break;
+
+      case 'P':
+      motors[0].setTargetPosition(val1.toFloat());
+      motors[1].setTargetPosition(val2.toFloat());
+      break;
+
+      case 'r':
+      DBG("Reset !");
+      motors[0].resetPosition(0);
+      motors[1].resetPosition(0);
+      break;
+      
+      default:
+      return false;
+    }
+
+    return true;
   }
 #endif
 };

@@ -7,8 +7,8 @@
 #endif
 
 
-#define USE_WIFI 1
-#define USE_OSC 1
+#define USE_WIFI 0
+#define USE_OSC 0
 #define USE_ETHERNET 0
 #define USE_SERIAL 1
 #define USE_MOTORS 1
@@ -37,6 +37,11 @@ EthernetManager ethernetManager;
 #if USE_MOTORS
 #include "MotorManager.h"
 MotorManager motorManager;
+#endif
+
+#if USE_SERIAL
+#include "SerialManager.h"
+SerialManager serialManager;
 #endif
 
 
@@ -81,6 +86,34 @@ void oscConnectionChanged(bool isConnected)
 }
 #endif
 
+
+#if USE_SERIAL
+void serialMessageReceived(char command, String val1, String val2)
+{
+
+    #if USE_MOTOR
+    if(motorManager.handleSerialMessage(command, val1, val2)) return;
+    #endif
+
+    DBG("Serial command not handled : "+command);
+}
+#endif
+
+
+void resetESP(bool toBootloader)
+{
+  if (toBootloader)
+  {
+    pinMode(0, OUTPUT);
+    digitalWrite(0, LOW);
+  }
+
+  ESP.restart();
+}
+
+
+/*****************                 SETUP AND LOOP                 *******************************/
+
 void setup()
 {
   Serial.begin(115200);
@@ -107,10 +140,20 @@ void setup()
   motorManager.init();
 #endif
 
+#if USE_SERIAL
+  serialManager.addCallbackMessageReceived(&serialMessageReceived);
+#endif
+
 }
+
 
 void loop()
 {
+  
+  #if USE_SERIAL
+  serialManager.update();
+  #endif
+  
   #if USE_OSC
   oscManager.update();
   #endif
@@ -118,16 +161,5 @@ void loop()
   #if USE_MOTORS
   motorManager.update();
   #endif
-}
 
-
-void resetESP(bool toBootloader)
-{
-  if (toBootloader)
-  {
-    pinMode(0, OUTPUT);
-    digitalWrite(0, LOW);
-  }
-
-  ESP.restart();
 }
