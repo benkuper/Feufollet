@@ -10,7 +10,7 @@ class MotorManager
     Motor motors[NUM_MOTORS];
     MotorConfig config;
 
-    bool mode2D = false;
+    bool liveUpdate = false;
 
     double curPos[2];
     double curSpeed[2];
@@ -34,9 +34,6 @@ class MotorManager
       DBG("Motor Manager init");
       for (int i = 0; i < NUM_MOTORS; i++) motors[i].init(i, config.uartRxPins[i], config.uartTxPins[i], config.uartTxEnPins[i], config.serialPorts[i], config.powerStageParams[i], config.motorParams[i]);
 
-      mode2D = true;
-
-      
       setAcceleration(preferences.getFloat("acceleration",1), false); //default value
       setMaxSpeed(preferences.getFloat("maxSpeed",1), false); //default value
 
@@ -60,7 +57,7 @@ class MotorManager
 
     void setup(float spoolRadius, float tx1, float ty1, float offset1X, float offset1Y, bool invert1, float tx2, float ty2, float offset2X, float offset2Y, bool invert2, bool save = true)
     {
-      DBG("Setup : "+String(spoolRadius)+" /  "+String(tx1)+","+String(ty1)+":"+String(offset1X)+","+String(offset1Y)+":"+String(invert1)+" / "+String(tx2)+","+String(ty2)+":"+String(offset2X)+","+String(offset2Y)+":"+String(invert2));
+      //DBG("Setup : "+String(spoolRadius)+" /  "+String(tx1)+","+String(ty1)+":"+String(offset1X)+","+String(offset1Y)+":"+String(invert1)+" / "+String(tx2)+","+String(ty2)+":"+String(offset2X)+","+String(offset2Y)+":"+String(invert2));
 
       
       motors[0].setup(spoolRadius, tx1, ty1, offset1X, offset1Y, invert1);
@@ -80,14 +77,14 @@ class MotorManager
         preferences.putFloat("offset2Y",offset2Y);
         preferences.putBool("invert2",invert2);
       }
-      
     }
+    
 
    
 
     void update()
     {
-      if (mode2D)
+      if (liveUpdate)
       {
         processMotion();
         computeDistances();
@@ -95,10 +92,13 @@ class MotorManager
 
       if (dbgLimiter++ == 0) 
       {
-        DBG("Target2D : "+String(targetPos[0])+" / "+String(targetPos[1])+"\t Cur pos : "+String(curPos[0])+","+String(curPos[1])+" / Motors : " + String(motors[0].targetPosition) + "\t" + String(motors[1].targetPosition));
+        DBG("Target2D "+String(targetPos[0])+" "+String(targetPos[1]));
+        DBG("Position "+String(curPos[0])+" "+String(curPos[1]));
+        DBG("MotorPosition "+String(motors[0].targetPosition)+" "+String(motors[1].targetPosition));
+        DBG("RealMotorPosition "+String(motors[0].getRealPosition())+" "+String(motors[1].getRealPosition()));
       }
       
-      if (dbgLimiter > 100) dbgLimiter = 0;
+      if (dbgLimiter > 10) dbgLimiter = 0;
     }
 
     void processMotion()
@@ -128,22 +128,20 @@ class MotorManager
         double dist = getPointDistance(motors[i].x, motors[i].y, txWithOffset, tyWithOffset);
         motors[i].setTargetPosition(dist);
       }
-
-      
     }
 
 
     void setAcceleration(float value, bool save = true)
     {
-      DBG("Acceleration : "+String(value));
+      //DBG("Acceleration : "+String(value));
       if(save) preferences.putFloat("acceleration",value);
       for (int i = 0; i < NUM_MOTORS; i++) motors[i].setAcceleration(value);
     }
 
     void setMaxSpeed(float value, bool save = true)
     {
-     DBG("Max Speed : "+String(value));
-     if(save) preferences.putFloat("maxSpeed",value);
+      //DBG("Max Speed : "+String(value));
+      if(save) preferences.putFloat("maxSpeed",value);
       for (int i = 0; i < NUM_MOTORS; i++) motors[i].setMaxSpeed(value);
     }
 
@@ -163,9 +161,14 @@ class MotorManager
     
     void setTargetPosition2D(float tx, float ty)
     {
-      mode2D = true;
       targetPos[0] = tx;
       targetPos[1] = ty;
+    }
+
+    void setLiveUpdate(bool value)
+    {
+      liveUpdate = value;
+      prevTime = micros()/1e6;
     }
 
 
@@ -255,6 +258,10 @@ class MotorManager
           }
           break;
 
+        case 'u':
+          setLiveUpdate(values[0].toInt() > 0);
+          break;
+          
         case 'P':
           motors[0].setTargetPosition(values[0].toFloat());
           motors[1].setTargetPosition(values[1].toFloat());

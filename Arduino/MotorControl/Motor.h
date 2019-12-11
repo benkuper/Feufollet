@@ -40,9 +40,9 @@ public:
     motor = TMC5160_UART_Transceiver(txEnPin, *port, 0);
     motor.begin(powerStageParams, motorParams, TMC5160::NORMAL_MOTOR_DIRECTION);
 
-
-    
     motor.setEncoderResolution(200, 360, false);
+    resetPosition(0); 
+    
   }
 
   void setup(double _spoolDiameter, float _x, float _y, float _targetOffsetX, float _targetOffsetY, bool _invert)
@@ -59,13 +59,14 @@ public:
   void setTargetPosition(float value)
   {
     targetPosition = value;
-    motor.setTargetPosition(metersToSteps(targetPosition));
+    motor.setTargetPosition(metersToSteps(targetPosition*(invert?-1:1)));
   }
 
   
   void resetPosition(float positionAtReset)
   {
-    motor.setCurrentPosition(metersToSteps(positionAtReset));
+    motor.setCurrentPosition(metersToSteps(positionAtReset*(invert?-1:1)));
+    setTargetPosition(positionAtReset);
   }
 
   void setMaxSpeed(float value)
@@ -85,7 +86,7 @@ public:
 
   float getRealPosition()
   {
-    return motor.getCurrentPosition();
+    return metersToSteps(motor.getCurrentPosition())*(invert?-1:1);
   }
 
   //Helpers

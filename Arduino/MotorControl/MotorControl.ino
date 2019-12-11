@@ -7,8 +7,10 @@
 #endif
 
 
-#define USE_WIFI 1
+#define USE_WIFI 0
+#if USE_WIFI
 #define USE_OSC 1
+#endif
 #define USE_ETHERNET 0
 #define USE_SERIAL 1
 #define USE_MOTORS 1

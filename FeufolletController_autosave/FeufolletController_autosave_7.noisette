@@ -1,0 +1,2927 @@
+{
+  "metaData": {
+    "version": "1.6.9",
+    "versionNumber": 67081
+  },
+  "dashboardManager": {
+    "parameters": [
+      {
+        "value": false,
+        "controlAddress": "/editMode"
+      }
+    ],
+    "items": [
+      {
+        "niceName": "Dashboard",
+        "type": "BaseItem",
+        "itemManager": {
+          "items": [
+            {
+              "parameters": [
+                {
+                  "value": [
+                    -364.0,
+                    -260.0
+                  ],
+                  "controlAddress": "/viewUIPosition"
+                },
+                {
+                  "value": [
+                    323.0,
+                    32.0
+                  ],
+                  "controlAddress": "/viewUISize"
+                }
+              ],
+              "niceName": "Dashboard Item",
+              "type": "DashboardParameterItem",
+              "ghostAddress": "/modules/serial/values/target2D",
+              "controllable": "/modules/serial/values/target2D"
+            },
+            {
+              "parameters": [
+                {
+                  "value": [
+                    -364.0,
+                    -218.0
+                  ],
+                  "controlAddress": "/viewUIPosition"
+                },
+                {
+                  "value": [
+                    322.0,
+                    30.0
+                  ],
+                  "controlAddress": "/viewUISize"
+                }
+              ],
+              "niceName": "Dashboard Item 1",
+              "type": "DashboardParameterItem",
+              "ghostAddress": "/modules/serial/values/position",
+              "controllable": "/modules/serial/values/position"
+            },
+            {
+              "parameters": [
+                {
+                  "value": [
+                    -32.0,
+                    -260.0
+                  ],
+                  "controlAddress": "/viewUIPosition"
+                },
+                {
+                  "value": [
+                    319.0,
+                    38.0
+                  ],
+                  "controlAddress": "/viewUISize"
+                }
+              ],
+              "niceName": "Dashboard Item 2",
+              "type": "DashboardParameterItem",
+              "ghostAddress": "/modules/serial/values/motorPosition",
+              "controllable": "/modules/serial/values/motorPosition"
+            },
+            {
+              "parameters": [
+                {
+                  "value": [
+                    -31.0,
+                    -212.0
+                  ],
+                  "controlAddress": "/viewUIPosition"
+                },
+                {
+                  "value": [
+                    315.0,
+                    35.0
+                  ],
+                  "controlAddress": "/viewUISize"
+                }
+              ],
+              "niceName": "Dashboard Item 3",
+              "type": "DashboardParameterItem",
+              "ghostAddress": "/modules/serial/values/realMotorPosition",
+              "controllable": "/modules/serial/values/realMotorPosition"
+            },
+            {
+              "parameters": [
+                {
+                  "value": [
+                    -128.0,
+                    -19.0
+                  ],
+                  "controlAddress": "/viewUIPosition"
+                },
+                {
+                  "value": [
+                    200.0,
+                    50.0
+                  ],
+                  "controlAddress": "/viewUISize"
+                },
+                {
+                  "value": "Live ON",
+                  "controlAddress": "/customText",
+                  "enabled": true
+                }
+              ],
+              "niceName": "Dashboard Item 4",
+              "type": "DashboardTriggerItem",
+              "ghostAddress": "/states/state/processors/liveUpdateON/consequencesTRUE/triggerAll",
+              "controllable": "/states/state/processors/liveUpdateON/consequencesTRUE/triggerAll"
+            },
+            {
+              "parameters": [
+                {
+                  "value": [
+                    -128.0,
+                    41.0
+                  ],
+                  "controlAddress": "/viewUIPosition"
+                },
+                {
+                  "value": [
+                    200.0,
+                    50.0
+                  ],
+                  "controlAddress": "/viewUISize"
+                },
+                {
+                  "value": "Live OFF",
+                  "controlAddress": "/customText",
+                  "enabled": true
+                }
+              ],
+              "niceName": "Dashboard Item 5",
+              "type": "DashboardTriggerItem",
+              "ghostAddress": "/states/state/processors/liveUpdateOFF/consequencesTRUE/triggerAll",
+              "controllable": "/states/state/processors/liveUpdateOFF/consequencesTRUE/triggerAll"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "moduleManager": {
+    "items": [
+      {
+        "parameters": [
+          {
+            "value": true,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": false,
+            "controlAddress": "/logIncoming"
+          }
+        ],
+        "niceName": "Serial",
+        "type": "Serial",
+        "scripts": {
+        },
+        "params": {
+          "parameters": [
+            {
+              "value": false,
+              "controlAddress": "/autoAdd"
+            },
+            {
+              "value": "Space separated",
+              "controlAddress": "/messageStructure"
+            },
+            {
+              "value": true,
+              "controlAddress": "/firstValueIsTheName"
+            },
+            {
+              "value": "Silicon Labs CP210x USB to UART Bridge (COM17)",
+              "controlAddress": "/port"
+            },
+            {
+              "value": 115200,
+              "hexMode": false,
+              "controlAddress": "/baudRate"
+            }
+          ]
+        },
+        "templates": {
+          "items": [
+            {
+              "niceName": "Setup",
+              "type": "BaseItem",
+              "menuPath": "",
+              "commandType": "Send values as string",
+              "customValues": {
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": false,
+                        "controlAddress": "/editable"
+                      },
+                      {
+                        "value": false,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "Setup command",
+                    "type": "String",
+                    "param": {
+                      "value": "S",
+                      "controlAddress": "/modules/serial/templates/setup/arguments/setupCommand/_1",
+                      "type": "String",
+                      "niceName": "#1",
+                      "customizable": true,
+                      "removable": false,
+                      "description": "Argument #1, type int",
+                      "hideInEditor": true,
+                      "feedbackOnly": false
+                    }
+                  },
+                  {
+                    "parameters": [
+                      {
+                        "value": false,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "Spool diameter",
+                    "type": "Float",
+                    "param": {
+                      "value": 0.08658000081777573,
+                      "controlAddress": "/modules/serial/templates/setup/arguments/spoolDiameter/_8",
+                      "type": "Float",
+                      "niceName": "#8",
+                      "customizable": true,
+                      "removable": false,
+                      "description": "Argument #8, type float",
+                      "hideInEditor": true,
+                      "feedbackOnly": false
+                    }
+                  },
+                  {
+                    "parameters": [
+                      {
+                        "value": false,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "Motor 0 Position",
+                    "type": "Point2D",
+                    "param": {
+                      "value": [
+                        -2.164999961853027,
+                        2.150000095367432
+                      ],
+                      "minValue": [
+                        -2.147483648e9,
+                        -2.147483648e9
+                      ],
+                      "maxValue": [
+                        2.147483648e9,
+                        2.147483648e9
+                      ],
+                      "controlAddress": "/modules/serial/templates/setup/arguments/motor0Position/_2",
+                      "type": "Point2D",
+                      "niceName": "#2",
+                      "customizable": true,
+                      "removable": false,
+                      "description": "Argument #2, type 2D",
+                      "hideInEditor": true,
+                      "feedbackOnly": false
+                    }
+                  },
+                  {
+                    "parameters": [
+                      {
+                        "value": false,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "Motor 0 Target Offset",
+                    "type": "Point2D",
+                    "param": {
+                      "value": [
+                        -0.3050000071525574,
+                        0.3050000071525574
+                      ],
+                      "minValue": [
+                        -2.147483648e9,
+                        -2.147483648e9
+                      ],
+                      "maxValue": [
+                        2.147483648e9,
+                        2.147483648e9
+                      ],
+                      "controlAddress": "/modules/serial/templates/setup/arguments/motor0TargetOffset/_3",
+                      "type": "Point2D",
+                      "niceName": "#3",
+                      "customizable": true,
+                      "removable": false,
+                      "description": "Argument #3, type 2D",
+                      "hideInEditor": true,
+                      "feedbackOnly": false
+                    }
+                  },
+                  {
+                    "parameters": [
+                      {
+                        "value": false,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "Motor 0 Invert",
+                    "type": "Boolean",
+                    "param": {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/modules/serial/templates/setup/arguments/motor0Invert/newBoolParameter",
+                      "type": "Boolean",
+                      "niceName": "New Bool Parameter",
+                      "customizable": true,
+                      "removable": false,
+                      "description": "",
+                      "hideInEditor": true,
+                      "feedbackOnly": false
+                    }
+                  },
+                  {
+                    "parameters": [
+                      {
+                        "value": false,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "Motor 1 Position",
+                    "type": "Point2D",
+                    "param": {
+                      "value": [
+                        2.164999961853027,
+                        2.150000095367432
+                      ],
+                      "minValue": [
+                        -2.147483648e9,
+                        -2.147483648e9
+                      ],
+                      "maxValue": [
+                        2.147483648e9,
+                        2.147483648e9
+                      ],
+                      "controlAddress": "/modules/serial/templates/setup/arguments/motor1Position/_5",
+                      "type": "Point2D",
+                      "niceName": "#5",
+                      "customizable": true,
+                      "removable": false,
+                      "description": "Argument #5, type 2D",
+                      "hideInEditor": true,
+                      "feedbackOnly": false
+                    }
+                  },
+                  {
+                    "parameters": [
+                      {
+                        "value": false,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "Motor 1 Target Offset",
+                    "type": "Point2D",
+                    "param": {
+                      "value": [
+                        0.3050000071525574,
+                        0.3050000071525574
+                      ],
+                      "minValue": [
+                        -2.147483648e9,
+                        -2.147483648e9
+                      ],
+                      "maxValue": [
+                        2.147483648e9,
+                        2.147483648e9
+                      ],
+                      "controlAddress": "/modules/serial/templates/setup/arguments/motor1TargetOffset/_6",
+                      "type": "Point2D",
+                      "niceName": "#6",
+                      "customizable": true,
+                      "removable": false,
+                      "description": "Argument #6, type 2D",
+                      "hideInEditor": true,
+                      "feedbackOnly": false
+                    }
+                  },
+                  {
+                    "parameters": [
+                      {
+                        "value": false,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "Motor 1 Invert",
+                    "type": "Boolean",
+                    "param": {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/modules/serial/templates/setup/arguments/motor1Invert/newBoolParameter",
+                      "type": "Boolean",
+                      "niceName": "New Bool Parameter",
+                      "customizable": true,
+                      "removable": false,
+                      "description": "",
+                      "hideInEditor": true,
+                      "feedbackOnly": false
+                    }
+                  }
+                ]
+              },
+              "params": [
+                {
+                  "parameters": [
+                    {
+                      "value": ",",
+                      "controlAddress": "/separator"
+                    },
+                    {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Separator"
+                },
+                {
+                  "parameters": [
+                    {
+                      "value": false,
+                      "controlAddress": "/appendCR"
+                    },
+                    {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Append CR"
+                },
+                {
+                  "parameters": [
+                    {
+                      "value": true,
+                      "controlAddress": "/appendNL"
+                    },
+                    {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Append NL"
+                }
+              ]
+            },
+            {
+              "parameters": [
+                {
+                  "value": [
+                    20.0,
+                    20.0
+                  ],
+                  "controlAddress": "/viewUIPosition"
+                }
+              ],
+              "niceName": "Reset Position",
+              "type": "BaseItem",
+              "menuPath": "",
+              "commandType": "Send values as string",
+              "customValues": {
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": false,
+                        "controlAddress": "/editable"
+                      },
+                      {
+                        "value": false,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "Setup command",
+                    "type": "String",
+                    "param": {
+                      "value": "r",
+                      "controlAddress": "/modules/serial/templates/resetPosition/arguments/setupCommand/_1",
+                      "type": "String",
+                      "niceName": "#1",
+                      "customizable": true,
+                      "removable": false,
+                      "description": "Argument #1, type int",
+                      "hideInEditor": true,
+                      "feedbackOnly": false
+                    }
+                  },
+                  {
+                    "parameters": [
+                      {
+                        "value": false,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "Rest value",
+                    "type": "Float",
+                    "param": {
+                      "value": 2.099999904632568,
+                      "controlAddress": "/modules/serial/templates/resetPosition/arguments/restValue/_2",
+                      "type": "Float",
+                      "niceName": "#2",
+                      "customizable": true,
+                      "removable": false,
+                      "description": "Argument #2, type float",
+                      "hideInEditor": true,
+                      "feedbackOnly": false
+                    }
+                  }
+                ]
+              },
+              "params": [
+                {
+                  "parameters": [
+                    {
+                      "value": ",",
+                      "controlAddress": "/separator"
+                    },
+                    {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Separator"
+                },
+                {
+                  "parameters": [
+                    {
+                      "value": false,
+                      "controlAddress": "/appendCR"
+                    },
+                    {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Append CR"
+                },
+                {
+                  "parameters": [
+                    {
+                      "value": true,
+                      "controlAddress": "/appendNL"
+                    },
+                    {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Append NL"
+                }
+              ]
+            },
+            {
+              "niceName": "Set Position 2D",
+              "type": "BaseItem",
+              "menuPath": "",
+              "commandType": "Send values as string",
+              "customValues": {
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": false,
+                        "controlAddress": "/editable"
+                      },
+                      {
+                        "value": false,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "#2",
+                    "type": "String",
+                    "param": {
+                      "value": "t",
+                      "controlAddress": "/modules/serial/templates/setPosition2D/arguments/_2/_2",
+                      "type": "String",
+                      "niceName": "#2",
+                      "customizable": true,
+                      "removable": false,
+                      "description": "Argument #2, type int",
+                      "hideInEditor": true,
+                      "feedbackOnly": false
+                    }
+                  },
+                  {
+                    "parameters": [
+                      {
+                        "value": true,
+                        "controlAddress": "/editable"
+                      },
+                      {
+                        "value": true,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "Position",
+                    "type": "Point2D"
+                  }
+                ]
+              },
+              "params": [
+                {
+                  "parameters": [
+                    {
+                      "value": ",",
+                      "controlAddress": "/separator"
+                    },
+                    {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Separator"
+                },
+                {
+                  "parameters": [
+                    {
+                      "value": false,
+                      "controlAddress": "/appendCR"
+                    },
+                    {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Append CR"
+                },
+                {
+                  "parameters": [
+                    {
+                      "value": true,
+                      "controlAddress": "/appendNL"
+                    },
+                    {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Append NL"
+                }
+              ]
+            },
+            {
+              "parameters": [
+                {
+                  "value": [
+                    20.0,
+                    20.0
+                  ],
+                  "controlAddress": "/viewUIPosition"
+                }
+              ],
+              "niceName": "Set Physics",
+              "type": "BaseItem",
+              "menuPath": "",
+              "commandType": "Send values as string",
+              "customValues": {
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": false,
+                        "controlAddress": "/editable"
+                      },
+                      {
+                        "value": false,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "Physics command",
+                    "type": "String",
+                    "param": {
+                      "value": "f",
+                      "controlAddress": "/modules/serial/templates/setPhysics/arguments/physicsCommand/_2",
+                      "type": "String",
+                      "niceName": "#2",
+                      "customizable": true,
+                      "removable": false,
+                      "description": "Argument #2, type int",
+                      "hideInEditor": true,
+                      "feedbackOnly": false
+                    }
+                  },
+                  {
+                    "parameters": [
+                      {
+                        "value": false,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "Force",
+                    "type": "Float",
+                    "param": {
+                      "value": 5.0,
+                      "controlAddress": "/modules/serial/templates/setPhysics/arguments/force/_2",
+                      "type": "Float",
+                      "niceName": "#2",
+                      "customizable": true,
+                      "removable": false,
+                      "description": "Argument #2, type float",
+                      "hideInEditor": true,
+                      "feedbackOnly": false
+                    }
+                  },
+                  {
+                    "parameters": [
+                      {
+                        "value": false,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "Friction",
+                    "type": "Float",
+                    "param": {
+                      "value": 2.0,
+                      "controlAddress": "/modules/serial/templates/setPhysics/arguments/friction/_3",
+                      "type": "Float",
+                      "niceName": "#3",
+                      "customizable": true,
+                      "removable": false,
+                      "description": "Argument #3, type float",
+                      "hideInEditor": true,
+                      "feedbackOnly": false
+                    }
+                  }
+                ]
+              },
+              "params": [
+                {
+                  "parameters": [
+                    {
+                      "value": ",",
+                      "controlAddress": "/separator"
+                    },
+                    {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Separator"
+                },
+                {
+                  "parameters": [
+                    {
+                      "value": false,
+                      "controlAddress": "/appendCR"
+                    },
+                    {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Append CR"
+                },
+                {
+                  "parameters": [
+                    {
+                      "value": true,
+                      "controlAddress": "/appendNL"
+                    },
+                    {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Append NL"
+                }
+              ]
+            },
+            {
+              "parameters": [
+                {
+                  "value": [
+                    40.0,
+                    40.0
+                  ],
+                  "controlAddress": "/viewUIPosition"
+                }
+              ],
+              "niceName": "Set Acceleration",
+              "type": "BaseItem",
+              "menuPath": "",
+              "commandType": "Send values as string",
+              "customValues": {
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": false,
+                        "controlAddress": "/editable"
+                      },
+                      {
+                        "value": true,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "#1",
+                    "type": "String",
+                    "param": {
+                      "value": "a",
+                      "controlAddress": "/modules/serial/templates/setAcceleration/arguments/_1/_2",
+                      "type": "String",
+                      "niceName": "#2",
+                      "customizable": true,
+                      "removable": false,
+                      "description": "Argument #2, type int",
+                      "hideInEditor": true,
+                      "feedbackOnly": false
+                    }
+                  },
+                  {
+                    "parameters": [
+                      {
+                        "value": false,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "Value",
+                    "type": "Float"
+                  }
+                ]
+              },
+              "params": [
+                {
+                  "parameters": [
+                    {
+                      "value": ",",
+                      "controlAddress": "/separator"
+                    },
+                    {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Separator"
+                },
+                {
+                  "parameters": [
+                    {
+                      "value": false,
+                      "controlAddress": "/appendCR"
+                    },
+                    {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Append CR"
+                },
+                {
+                  "parameters": [
+                    {
+                      "value": true,
+                      "controlAddress": "/appendNL"
+                    },
+                    {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Append NL"
+                }
+              ]
+            },
+            {
+              "parameters": [
+                {
+                  "value": [
+                    60.0,
+                    60.0
+                  ],
+                  "controlAddress": "/viewUIPosition"
+                }
+              ],
+              "niceName": "Set Max Speed",
+              "type": "BaseItem",
+              "menuPath": "",
+              "commandType": "Send values as string",
+              "customValues": {
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": false,
+                        "controlAddress": "/editable"
+                      },
+                      {
+                        "value": true,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "#1",
+                    "type": "String",
+                    "param": {
+                      "value": "s",
+                      "controlAddress": "/modules/serial/templates/setMaxSpeed/arguments/_1/_2",
+                      "type": "String",
+                      "niceName": "#2",
+                      "customizable": true,
+                      "removable": false,
+                      "description": "Argument #2, type int",
+                      "hideInEditor": true,
+                      "feedbackOnly": false
+                    }
+                  },
+                  {
+                    "parameters": [
+                      {
+                        "value": false,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "Value",
+                    "type": "Float"
+                  }
+                ]
+              },
+              "params": [
+                {
+                  "parameters": [
+                    {
+                      "value": ",",
+                      "controlAddress": "/separator"
+                    },
+                    {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Separator"
+                },
+                {
+                  "parameters": [
+                    {
+                      "value": false,
+                      "controlAddress": "/appendCR"
+                    },
+                    {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Append CR"
+                },
+                {
+                  "parameters": [
+                    {
+                      "value": true,
+                      "controlAddress": "/appendNL"
+                    },
+                    {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Append NL"
+                }
+              ]
+            },
+            {
+              "parameters": [
+                {
+                  "value": [
+                    80.0,
+                    80.0
+                  ],
+                  "controlAddress": "/viewUIPosition"
+                }
+              ],
+              "niceName": "Live Update",
+              "type": "BaseItem",
+              "menuPath": "",
+              "commandType": "Send values as string",
+              "customValues": {
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": false,
+                        "controlAddress": "/editable"
+                      },
+                      {
+                        "value": true,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "#1",
+                    "type": "String",
+                    "param": {
+                      "value": "u",
+                      "controlAddress": "/modules/serial/templates/liveUpdate/arguments/_1/_2",
+                      "type": "String",
+                      "niceName": "#2",
+                      "customizable": true,
+                      "removable": false,
+                      "description": "Argument #2, type int",
+                      "hideInEditor": true,
+                      "feedbackOnly": false
+                    }
+                  },
+                  {
+                    "parameters": [
+                      {
+                        "value": false,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "Value",
+                    "type": "Boolean",
+                    "param": {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/modules/serial/templates/liveUpdate/arguments/value/_2",
+                      "type": "Boolean",
+                      "niceName": "#2",
+                      "customizable": true,
+                      "removable": false,
+                      "description": "Argument #2, type bool",
+                      "hideInEditor": true,
+                      "feedbackOnly": false
+                    }
+                  }
+                ]
+              },
+              "params": [
+                {
+                  "parameters": [
+                    {
+                      "value": ",",
+                      "controlAddress": "/separator"
+                    },
+                    {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Separator"
+                },
+                {
+                  "parameters": [
+                    {
+                      "value": false,
+                      "controlAddress": "/appendCR"
+                    },
+                    {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Append CR"
+                },
+                {
+                  "parameters": [
+                    {
+                      "value": true,
+                      "controlAddress": "/appendNL"
+                    },
+                    {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Append NL"
+                }
+              ]
+            },
+            {
+              "parameters": [
+                {
+                  "value": [
+                    100.0,
+                    100.0
+                  ],
+                  "controlAddress": "/viewUIPosition"
+                }
+              ],
+              "niceName": "Set Motor Positions",
+              "type": "BaseItem",
+              "menuPath": "",
+              "commandType": "Send values as string",
+              "customValues": {
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": false,
+                        "controlAddress": "/editable"
+                      },
+                      {
+                        "value": true,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "#1",
+                    "type": "String",
+                    "param": {
+                      "value": "P",
+                      "controlAddress": "/modules/serial/templates/setMotorPositions/arguments/_1/_2",
+                      "type": "String",
+                      "niceName": "#2",
+                      "customizable": true,
+                      "removable": false,
+                      "description": "Argument #2, type int",
+                      "hideInEditor": true,
+                      "feedbackOnly": false
+                    }
+                  },
+                  {
+                    "parameters": [
+                      {
+                        "value": false,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "#2",
+                    "type": "Float",
+                    "param": {
+                      "value": 1.499999761581421,
+                      "controlAddress": "/modules/serial/templates/setMotorPositions/arguments/_2/_2",
+                      "type": "Float",
+                      "niceName": "#2",
+                      "customizable": true,
+                      "removable": false,
+                      "description": "Argument #2, type float",
+                      "hideInEditor": true,
+                      "feedbackOnly": false
+                    }
+                  },
+                  {
+                    "parameters": [
+                      {
+                        "value": false,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "#3",
+                    "type": "Float",
+                    "param": {
+                      "value": 2.099999904632568,
+                      "controlAddress": "/modules/serial/templates/setMotorPositions/arguments/_3/_3",
+                      "type": "Float",
+                      "niceName": "#3",
+                      "customizable": true,
+                      "removable": false,
+                      "description": "Argument #3, type float",
+                      "hideInEditor": true,
+                      "feedbackOnly": false
+                    }
+                  }
+                ]
+              },
+              "params": [
+                {
+                  "parameters": [
+                    {
+                      "value": ",",
+                      "controlAddress": "/separator"
+                    },
+                    {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Separator"
+                },
+                {
+                  "parameters": [
+                    {
+                      "value": false,
+                      "controlAddress": "/appendCR"
+                    },
+                    {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Append CR"
+                },
+                {
+                  "parameters": [
+                    {
+                      "value": true,
+                      "controlAddress": "/appendNL"
+                    },
+                    {
+                      "value": false,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Append NL"
+                }
+              ]
+            }
+          ]
+        },
+        "values": {
+          "parameters": [
+            {
+              "value": [
+                0.0,
+                1.200000047683716
+              ],
+              "minValue": [
+                -2.147483648e9,
+                -2.147483648e9
+              ],
+              "maxValue": [
+                2.147483648e9,
+                2.147483648e9
+              ],
+              "controlAddress": "/target2D",
+              "type": "Point2D",
+              "niceName": "Target2D",
+              "customizable": true,
+              "removable": true,
+              "description": "Target2D",
+              "hideInEditor": false,
+              "feedbackOnly": false
+            },
+            {
+              "value": [
+                0.0,
+                1.200000047683716
+              ],
+              "minValue": [
+                -3.0,
+                0.0
+              ],
+              "maxValue": [
+                3.0,
+                3.0
+              ],
+              "controlAddress": "/position",
+              "type": "Point2D",
+              "niceName": "Position",
+              "customizable": true,
+              "removable": true,
+              "description": "Position",
+              "hideInEditor": false,
+              "feedbackOnly": false
+            },
+            {
+              "value": [
+                1.970000028610229,
+                1.970000028610229
+              ],
+              "minValue": [
+                -5.0,
+                -5.0
+              ],
+              "maxValue": [
+                5.0,
+                5.0
+              ],
+              "controlAddress": "/motorPosition",
+              "type": "Point2D",
+              "niceName": "MotorPosition",
+              "customizable": true,
+              "removable": true,
+              "description": "MotorPosition",
+              "hideInEditor": false,
+              "feedbackOnly": false
+            },
+            {
+              "value": [
+                1.06437625e6,
+                1.06437625e6
+              ],
+              "minValue": [
+                -2.147483648e9,
+                -2.147483648e9
+              ],
+              "maxValue": [
+                2.147483648e9,
+                2.147483648e9
+              ],
+              "controlAddress": "/realMotorPosition",
+              "type": "Point2D",
+              "niceName": "RealMotorPosition",
+              "customizable": true,
+              "removable": true,
+              "description": "RealMotorPosition",
+              "hideInEditor": false,
+              "feedbackOnly": false
+            }
+          ]
+        },
+        "portID": "Silicon Labs CP210x USB to UART Bridge (COM17)"
+      }
+    ]
+  },
+  "stateManager": {
+    "items": [
+      {
+        "parameters": [
+          {
+            "value": [
+              -298.0,
+              -167.0
+            ],
+            "controlAddress": "/viewUIPosition"
+          },
+          {
+            "value": [
+              275.0,
+              344.0
+            ],
+            "controlAddress": "/viewUISize"
+          },
+          {
+            "value": true,
+            "controlAddress": "/active"
+          }
+        ],
+        "niceName": "State",
+        "type": "State",
+        "processors": {
+          "items": [
+            {
+              "niceName": "Send Setup",
+              "editorIsCollapsed": true,
+              "type": "Action",
+              "conditions": {
+              },
+              "consequences": {
+                "items": [
+                  {
+                    "niceName": "Consequence",
+                    "type": "BaseItem",
+                    "commandModule": "serial",
+                    "commandPath": "Templates",
+                    "commandType": "Setup",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": ",",
+                          "controlAddress": "/separator"
+                        },
+                        {
+                          "value": false,
+                          "controlAddress": "/appendCR"
+                        },
+                        {
+                          "value": true,
+                          "controlAddress": "/appendNL"
+                        }
+                      ],
+                      "argManager": {
+                        "items": [
+                          {
+                            "niceName": "Setup command",
+                            "type": "String"
+                          },
+                          {
+                            "niceName": "Spool diameter",
+                            "type": "Float",
+                            "param": {
+                              "value": 0.08658000081777573,
+                              "controlAddress": "/states/state/processors/sendSetup/consequencesTRUE/consequence/command/arguments/spoolDiameter/_8"
+                            }
+                          },
+                          {
+                            "niceName": "Motor 0 Position",
+                            "type": "Point2D",
+                            "param": {
+                              "value": [
+                                -2.164999961853027,
+                                2.150000095367432
+                              ],
+                              "controlAddress": "/states/state/processors/sendSetup/consequencesTRUE/consequence/command/arguments/motor0Position/_2"
+                            }
+                          },
+                          {
+                            "niceName": "Motor 0 Target Offset",
+                            "type": "Point2D",
+                            "param": {
+                              "value": [
+                                -0.3050000071525574,
+                                0.3050000071525574
+                              ],
+                              "controlAddress": "/states/state/processors/sendSetup/consequencesTRUE/consequence/command/arguments/motor0TargetOffset/_3"
+                            }
+                          },
+                          {
+                            "niceName": "Motor 0 Invert",
+                            "type": "Boolean",
+                            "param": {
+                              "value": false,
+                              "controlAddress": "/states/state/processors/sendSetup/consequencesTRUE/consequence/command/arguments/motor0Invert/newBoolParameter"
+                            }
+                          },
+                          {
+                            "niceName": "Motor 1 Position",
+                            "type": "Point2D",
+                            "param": {
+                              "value": [
+                                2.164999961853027,
+                                2.150000095367432
+                              ],
+                              "controlAddress": "/states/state/processors/sendSetup/consequencesTRUE/consequence/command/arguments/motor1Position/_5"
+                            }
+                          },
+                          {
+                            "niceName": "Motor 1 Target Offset",
+                            "type": "Point2D",
+                            "param": {
+                              "value": [
+                                0.3050000071525574,
+                                0.3050000071525574
+                              ],
+                              "controlAddress": "/states/state/processors/sendSetup/consequencesTRUE/consequence/command/arguments/motor1TargetOffset/_6"
+                            }
+                          },
+                          {
+                            "niceName": "Motor 1 Invert",
+                            "type": "Boolean",
+                            "param": {
+                              "value": false,
+                              "controlAddress": "/states/state/processors/sendSetup/consequencesTRUE/consequence/command/arguments/motor1Invert/newBoolParameter"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "consequencesOff": {
+              }
+            },
+            {
+              "parameters": [
+                {
+                  "value": [
+                    20.0,
+                    20.0
+                  ],
+                  "controlAddress": "/viewUIPosition"
+                }
+              ],
+              "niceName": "Smooth Physics",
+              "editorIsCollapsed": true,
+              "type": "Action",
+              "conditions": {
+              },
+              "consequences": {
+                "items": [
+                  {
+                    "niceName": "Consequence",
+                    "type": "BaseItem",
+                    "commandModule": "serial",
+                    "commandPath": "Templates",
+                    "commandType": "Set Physics",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": ",",
+                          "controlAddress": "/separator"
+                        },
+                        {
+                          "value": false,
+                          "controlAddress": "/appendCR"
+                        },
+                        {
+                          "value": true,
+                          "controlAddress": "/appendNL"
+                        }
+                      ],
+                      "argManager": {
+                        "items": [
+                          {
+                            "niceName": "Physics command",
+                            "type": "String"
+                          },
+                          {
+                            "niceName": "Force",
+                            "type": "Float",
+                            "param": {
+                              "value": 5.0,
+                              "controlAddress": "/states/state/processors/smoothPhysics/consequencesTRUE/consequence/command/arguments/force/newFloatParameter"
+                            }
+                          },
+                          {
+                            "niceName": "Friction",
+                            "type": "Float",
+                            "param": {
+                              "value": 5.0,
+                              "controlAddress": "/states/state/processors/smoothPhysics/consequencesTRUE/consequence/command/arguments/friction/newFloatParameter"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "consequencesOff": {
+              }
+            },
+            {
+              "parameters": [
+                {
+                  "value": [
+                    40.0,
+                    40.0
+                  ],
+                  "controlAddress": "/viewUIPosition"
+                }
+              ],
+              "niceName": "Aggressive Physics",
+              "editorIsCollapsed": true,
+              "type": "Action",
+              "conditions": {
+              },
+              "consequences": {
+                "items": [
+                  {
+                    "niceName": "Consequence",
+                    "type": "BaseItem",
+                    "commandModule": "serial",
+                    "commandPath": "Templates",
+                    "commandType": "Set Physics",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": ",",
+                          "controlAddress": "/separator"
+                        },
+                        {
+                          "value": false,
+                          "controlAddress": "/appendCR"
+                        },
+                        {
+                          "value": true,
+                          "controlAddress": "/appendNL"
+                        }
+                      ],
+                      "argManager": {
+                        "items": [
+                          {
+                            "niceName": "Physics command",
+                            "type": "String"
+                          },
+                          {
+                            "niceName": "Force",
+                            "type": "Float",
+                            "param": {
+                              "value": 30.0,
+                              "controlAddress": "/states/state/processors/aggressivePhysics/consequencesTRUE/consequence/command/arguments/force/newFloatParameter"
+                            }
+                          },
+                          {
+                            "niceName": "Friction",
+                            "type": "Float",
+                            "param": {
+                              "value": 20.0,
+                              "controlAddress": "/states/state/processors/aggressivePhysics/consequencesTRUE/consequence/command/arguments/friction/newFloatParameter"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "consequencesOff": {
+              }
+            },
+            {
+              "parameters": [
+                {
+                  "value": [
+                    20.0,
+                    20.0
+                  ],
+                  "controlAddress": "/viewUIPosition"
+                }
+              ],
+              "niceName": "Reset to 2.145",
+              "editorIsCollapsed": true,
+              "type": "Action",
+              "conditions": {
+              },
+              "consequences": {
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": [
+                          20.0,
+                          20.0
+                        ],
+                        "controlAddress": "/viewUIPosition"
+                      }
+                    ],
+                    "niceName": "Consequence 1",
+                    "type": "BaseItem",
+                    "commandModule": "serial",
+                    "commandPath": "Templates",
+                    "commandType": "Live Update",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": ",",
+                          "controlAddress": "/separator"
+                        },
+                        {
+                          "value": false,
+                          "controlAddress": "/appendCR"
+                        },
+                        {
+                          "value": true,
+                          "controlAddress": "/appendNL"
+                        }
+                      ],
+                      "argManager": {
+                        "items": [
+                          {
+                            "niceName": "#1",
+                            "type": "String"
+                          },
+                          {
+                            "niceName": "Value",
+                            "type": "Boolean",
+                            "param": {
+                              "value": false,
+                              "controlAddress": "/states/state/processors/resetTo2145/consequencesTRUE/consequence1/command/arguments/value/newBoolParameter"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "niceName": "Consequence",
+                    "type": "BaseItem",
+                    "commandModule": "serial",
+                    "commandPath": "Templates",
+                    "commandType": "Reset Position",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": ",",
+                          "controlAddress": "/separator"
+                        },
+                        {
+                          "value": false,
+                          "controlAddress": "/appendCR"
+                        },
+                        {
+                          "value": true,
+                          "controlAddress": "/appendNL"
+                        }
+                      ],
+                      "argManager": {
+                        "items": [
+                          {
+                            "niceName": "Setup command",
+                            "type": "String"
+                          },
+                          {
+                            "niceName": "Rest value",
+                            "type": "Float",
+                            "param": {
+                              "value": 2.144999980926514,
+                              "controlAddress": "/states/state/processors/resetTo2145/consequencesTRUE/consequence/command/arguments/restValue/newFloatParameter"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "consequencesOff": {
+              }
+            },
+            {
+              "parameters": [
+                {
+                  "value": [
+                    40.0,
+                    40.0
+                  ],
+                  "controlAddress": "/viewUIPosition"
+                }
+              ],
+              "niceName": "Reset to 0",
+              "editorIsCollapsed": true,
+              "type": "Action",
+              "conditions": {
+              },
+              "consequences": {
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": [
+                          20.0,
+                          20.0
+                        ],
+                        "controlAddress": "/viewUIPosition"
+                      }
+                    ],
+                    "niceName": "Consequence 1",
+                    "type": "BaseItem",
+                    "commandModule": "serial",
+                    "commandPath": "Templates",
+                    "commandType": "Live Update",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": ",",
+                          "controlAddress": "/separator"
+                        },
+                        {
+                          "value": false,
+                          "controlAddress": "/appendCR"
+                        },
+                        {
+                          "value": true,
+                          "controlAddress": "/appendNL"
+                        }
+                      ],
+                      "argManager": {
+                        "items": [
+                          {
+                            "niceName": "#1",
+                            "type": "String"
+                          },
+                          {
+                            "niceName": "Value",
+                            "type": "Boolean",
+                            "param": {
+                              "value": false,
+                              "controlAddress": "/states/state/processors/resetTo0/consequencesTRUE/consequence1/command/arguments/value/newBoolParameter"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "niceName": "Consequence",
+                    "type": "BaseItem",
+                    "commandModule": "serial",
+                    "commandPath": "Templates",
+                    "commandType": "Reset Position",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": ",",
+                          "controlAddress": "/separator"
+                        },
+                        {
+                          "value": false,
+                          "controlAddress": "/appendCR"
+                        },
+                        {
+                          "value": true,
+                          "controlAddress": "/appendNL"
+                        }
+                      ],
+                      "argManager": {
+                        "items": [
+                          {
+                            "niceName": "Setup command",
+                            "type": "String"
+                          },
+                          {
+                            "niceName": "Rest value",
+                            "type": "Float",
+                            "param": {
+                              "value": 0.0,
+                              "controlAddress": "/states/state/processors/resetTo0/consequencesTRUE/consequence/command/arguments/restValue/newFloatParameter"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "consequencesOff": {
+              }
+            },
+            {
+              "parameters": [
+                {
+                  "value": [
+                    40.0,
+                    40.0
+                  ],
+                  "controlAddress": "/viewUIPosition"
+                }
+              ],
+              "niceName": "Reset to 2.28",
+              "editorIsCollapsed": true,
+              "type": "Action",
+              "conditions": {
+              },
+              "consequences": {
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": [
+                          20.0,
+                          20.0
+                        ],
+                        "controlAddress": "/viewUIPosition"
+                      }
+                    ],
+                    "niceName": "Consequence 1",
+                    "type": "BaseItem",
+                    "commandModule": "serial",
+                    "commandPath": "Templates",
+                    "commandType": "Live Update",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": ",",
+                          "controlAddress": "/separator"
+                        },
+                        {
+                          "value": false,
+                          "controlAddress": "/appendCR"
+                        },
+                        {
+                          "value": true,
+                          "controlAddress": "/appendNL"
+                        }
+                      ],
+                      "argManager": {
+                        "items": [
+                          {
+                            "niceName": "#1",
+                            "type": "String"
+                          },
+                          {
+                            "niceName": "Value",
+                            "type": "Boolean",
+                            "param": {
+                              "value": false,
+                              "controlAddress": "/states/state/processors/resetTo228/consequencesTRUE/consequence1/command/arguments/value/newBoolParameter"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "niceName": "Consequence",
+                    "type": "BaseItem",
+                    "commandModule": "serial",
+                    "commandPath": "Templates",
+                    "commandType": "Reset Position",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": ",",
+                          "controlAddress": "/separator"
+                        },
+                        {
+                          "value": false,
+                          "controlAddress": "/appendCR"
+                        },
+                        {
+                          "value": true,
+                          "controlAddress": "/appendNL"
+                        }
+                      ],
+                      "argManager": {
+                        "items": [
+                          {
+                            "niceName": "Setup command",
+                            "type": "String"
+                          },
+                          {
+                            "niceName": "Rest value",
+                            "type": "Float",
+                            "param": {
+                              "value": 2.279999971389771,
+                              "controlAddress": "/states/state/processors/resetTo228/consequencesTRUE/consequence/command/arguments/restValue/newFloatParameter"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "consequencesOff": {
+              }
+            },
+            {
+              "niceName": "Positions 2D 0,1",
+              "editorIsCollapsed": true,
+              "type": "Action",
+              "conditions": {
+              },
+              "consequences": {
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": [
+                          20.0,
+                          20.0
+                        ],
+                        "controlAddress": "/viewUIPosition"
+                      }
+                    ],
+                    "niceName": "0,1",
+                    "type": "BaseItem",
+                    "commandModule": "serial",
+                    "commandPath": "Templates",
+                    "commandType": "Set Position 2D",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": ",",
+                          "controlAddress": "/separator"
+                        },
+                        {
+                          "value": false,
+                          "controlAddress": "/appendCR"
+                        },
+                        {
+                          "value": true,
+                          "controlAddress": "/appendNL"
+                        }
+                      ],
+                      "argManager": {
+                        "items": [
+                          {
+                            "niceName": "#2",
+                            "type": "String"
+                          },
+                          {
+                            "niceName": "Position",
+                            "type": "Point2D",
+                            "param": {
+                              "value": [
+                                0.0,
+                                1.0
+                              ],
+                              "controlAddress": "/states/state/processors/positions2D01/consequencesTRUE/01/command/arguments/position/newPoint2DParameter"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "consequencesOff": {
+              }
+            },
+            {
+              "parameters": [
+                {
+                  "value": [
+                    20.0,
+                    20.0
+                  ],
+                  "controlAddress": "/viewUIPosition"
+                }
+              ],
+              "niceName": "Positions 2D 0,68",
+              "editorIsCollapsed": true,
+              "type": "Action",
+              "conditions": {
+              },
+              "consequences": {
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": [
+                          20.0,
+                          20.0
+                        ],
+                        "controlAddress": "/viewUIPosition"
+                      }
+                    ],
+                    "niceName": "0,1",
+                    "type": "BaseItem",
+                    "commandModule": "serial",
+                    "commandPath": "Templates",
+                    "commandType": "Set Position 2D",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": ",",
+                          "controlAddress": "/separator"
+                        },
+                        {
+                          "value": false,
+                          "controlAddress": "/appendCR"
+                        },
+                        {
+                          "value": true,
+                          "controlAddress": "/appendNL"
+                        }
+                      ],
+                      "argManager": {
+                        "items": [
+                          {
+                            "niceName": "#2",
+                            "type": "String"
+                          },
+                          {
+                            "niceName": "Position",
+                            "type": "Point2D",
+                            "param": {
+                              "value": [
+                                0.0,
+                                0.550000011920929
+                              ],
+                              "controlAddress": "/states/state/processors/positions2D068/consequencesTRUE/01/command/arguments/position/newPoint2DParameter"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "consequencesOff": {
+              }
+            },
+            {
+              "parameters": [
+                {
+                  "value": [
+                    20.0,
+                    20.0
+                  ],
+                  "controlAddress": "/viewUIPosition"
+                }
+              ],
+              "niceName": "Positions 2D 0,0",
+              "editorIsCollapsed": true,
+              "type": "Action",
+              "conditions": {
+              },
+              "consequences": {
+                "items": [
+                  {
+                    "niceName": "0,0",
+                    "editorIsCollapsed": true,
+                    "type": "BaseItem",
+                    "commandModule": "serial",
+                    "commandPath": "Templates",
+                    "commandType": "Set Position 2D",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": ",",
+                          "controlAddress": "/separator"
+                        },
+                        {
+                          "value": false,
+                          "controlAddress": "/appendCR"
+                        },
+                        {
+                          "value": true,
+                          "controlAddress": "/appendNL"
+                        }
+                      ],
+                      "argManager": {
+                        "items": [
+                          {
+                            "niceName": "#2",
+                            "type": "String"
+                          },
+                          {
+                            "niceName": "Position",
+                            "type": "Point2D"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "consequencesOff": {
+              }
+            },
+            {
+              "parameters": [
+                {
+                  "value": [
+                    40.0,
+                    40.0
+                  ],
+                  "controlAddress": "/viewUIPosition"
+                }
+              ],
+              "niceName": "Live Update ON",
+              "editorIsCollapsed": true,
+              "type": "Action",
+              "conditions": {
+              },
+              "consequences": {
+                "items": [
+                  {
+                    "niceName": "Consequence",
+                    "type": "BaseItem",
+                    "commandModule": "serial",
+                    "commandPath": "Templates",
+                    "commandType": "Live Update",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": ",",
+                          "controlAddress": "/separator"
+                        },
+                        {
+                          "value": false,
+                          "controlAddress": "/appendCR"
+                        },
+                        {
+                          "value": true,
+                          "controlAddress": "/appendNL"
+                        }
+                      ],
+                      "argManager": {
+                        "items": [
+                          {
+                            "niceName": "#1",
+                            "type": "String"
+                          },
+                          {
+                            "niceName": "Value",
+                            "type": "Boolean",
+                            "param": {
+                              "value": true,
+                              "controlAddress": "/states/state/processors/liveUpdateON/consequencesTRUE/consequence/command/arguments/value/newBoolParameter"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "consequencesOff": {
+              }
+            },
+            {
+              "parameters": [
+                {
+                  "value": [
+                    60.0,
+                    60.0
+                  ],
+                  "controlAddress": "/viewUIPosition"
+                }
+              ],
+              "niceName": "Live Update OFF",
+              "editorIsCollapsed": true,
+              "type": "Action",
+              "conditions": {
+              },
+              "consequences": {
+                "items": [
+                  {
+                    "niceName": "Consequence",
+                    "type": "BaseItem",
+                    "commandModule": "serial",
+                    "commandPath": "Templates",
+                    "commandType": "Live Update",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": ",",
+                          "controlAddress": "/separator"
+                        },
+                        {
+                          "value": false,
+                          "controlAddress": "/appendCR"
+                        },
+                        {
+                          "value": true,
+                          "controlAddress": "/appendNL"
+                        }
+                      ],
+                      "argManager": {
+                        "items": [
+                          {
+                            "niceName": "#1",
+                            "type": "String"
+                          },
+                          {
+                            "niceName": "Value",
+                            "type": "Boolean",
+                            "param": {
+                              "value": false,
+                              "controlAddress": "/states/state/processors/liveUpdateOFF/consequencesTRUE/consequence/command/arguments/value/newBoolParameter"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "consequencesOff": {
+              }
+            },
+            {
+              "niceName": "Set Acc and speed",
+              "editorIsCollapsed": true,
+              "type": "Action",
+              "conditions": {
+              },
+              "consequences": {
+                "items": [
+                  {
+                    "niceName": "Consequence",
+                    "type": "BaseItem",
+                    "commandModule": "serial",
+                    "commandPath": "Templates",
+                    "commandType": "Set Acceleration",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": ",",
+                          "controlAddress": "/separator"
+                        },
+                        {
+                          "value": false,
+                          "controlAddress": "/appendCR"
+                        },
+                        {
+                          "value": true,
+                          "controlAddress": "/appendNL"
+                        }
+                      ],
+                      "argManager": {
+                        "items": [
+                          {
+                            "niceName": "#1",
+                            "type": "String"
+                          },
+                          {
+                            "niceName": "Value",
+                            "type": "Float",
+                            "param": {
+                              "value": 10.0,
+                              "controlAddress": "/states/state/processors/setAccAndSpeed/consequencesTRUE/consequence/command/arguments/value/newFloatParameter"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "niceName": "Consequence 1",
+                    "type": "BaseItem",
+                    "commandModule": "serial",
+                    "commandPath": "Templates",
+                    "commandType": "Set Max Speed",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": ",",
+                          "controlAddress": "/separator"
+                        },
+                        {
+                          "value": false,
+                          "controlAddress": "/appendCR"
+                        },
+                        {
+                          "value": true,
+                          "controlAddress": "/appendNL"
+                        }
+                      ],
+                      "argManager": {
+                        "items": [
+                          {
+                            "niceName": "#1",
+                            "type": "String"
+                          },
+                          {
+                            "niceName": "Value",
+                            "type": "Float",
+                            "param": {
+                              "value": 10.0,
+                              "controlAddress": "/states/state/processors/setAccAndSpeed/consequencesTRUE/consequence1/command/arguments/value/newFloatParameter"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "consequencesOff": {
+              }
+            },
+            {
+              "parameters": [
+                {
+                  "value": [
+                    20.0,
+                    20.0
+                  ],
+                  "controlAddress": "/viewUIPosition"
+                }
+              ],
+              "niceName": "Slow speed",
+              "editorIsCollapsed": true,
+              "type": "Action",
+              "conditions": {
+              },
+              "consequences": {
+                "items": [
+                  {
+                    "niceName": "Consequence",
+                    "type": "BaseItem",
+                    "commandModule": "serial",
+                    "commandPath": "Templates",
+                    "commandType": "Set Acceleration",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": ",",
+                          "controlAddress": "/separator"
+                        },
+                        {
+                          "value": false,
+                          "controlAddress": "/appendCR"
+                        },
+                        {
+                          "value": true,
+                          "controlAddress": "/appendNL"
+                        }
+                      ],
+                      "argManager": {
+                        "items": [
+                          {
+                            "niceName": "#1",
+                            "type": "String"
+                          },
+                          {
+                            "niceName": "Value",
+                            "type": "Float",
+                            "param": {
+                              "value": 1.0,
+                              "controlAddress": "/states/state/processors/slowSpeed/consequencesTRUE/consequence/command/arguments/value/newFloatParameter"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "niceName": "Consequence 1",
+                    "type": "BaseItem",
+                    "commandModule": "serial",
+                    "commandPath": "Templates",
+                    "commandType": "Set Max Speed",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": ",",
+                          "controlAddress": "/separator"
+                        },
+                        {
+                          "value": false,
+                          "controlAddress": "/appendCR"
+                        },
+                        {
+                          "value": true,
+                          "controlAddress": "/appendNL"
+                        }
+                      ],
+                      "argManager": {
+                        "items": [
+                          {
+                            "niceName": "#1",
+                            "type": "String"
+                          },
+                          {
+                            "niceName": "Value",
+                            "type": "Float",
+                            "param": {
+                              "value": 1.0,
+                              "controlAddress": "/states/state/processors/slowSpeed/consequencesTRUE/consequence1/command/arguments/value/newFloatParameter"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "consequencesOff": {
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "sequenceManager": {
+    "items": [
+      {
+        "parameters": [
+          {
+            "value": 5.0,
+            "controlAddress": "/listSize"
+          }
+        ],
+        "niceName": "Sequence",
+        "type": "BaseItem",
+        "layerManager": {
+          "items": [
+            {
+              "parameters": [
+                {
+                  "value": 88.0,
+                  "controlAddress": "/listSize"
+                },
+                {
+                  "value": 120,
+                  "hexMode": false,
+                  "controlAddress": "/uiHeight"
+                },
+                {
+                  "value": [
+                    0.2117647081613541,
+                    0.2117647081613541,
+                    0.2117647081613541,
+                    1.0
+                  ],
+                  "controlAddress": "/layerColor"
+                },
+                {
+                  "value": 0.9958447217941284,
+                  "controlAddress": "/value"
+                }
+              ],
+              "niceName": "Mapping",
+              "type": "Mapping",
+              "mapping": {
+                "parameters": [
+                  {
+                    "value": [
+                      0.0,
+                      1.991689443588257
+                    ],
+                    "controlAddress": "/outValue"
+                  }
+                ],
+                "niceName": "Mapping",
+                "type": "Mapping",
+                "input": {
+                  "parameters": [
+                    {
+                      "value": "",
+                      "controlAddress": "/inputValue"
+                    }
+                  ]
+                },
+                "filters": {
+                  "items": [
+                    {
+                      "parameters": [
+                        {
+                          "value": 1.991689443588257,
+                          "controlAddress": "/out"
+                        }
+                      ],
+                      "niceName": "Remap",
+                      "type": "Remap",
+                      "filterParams": {
+                        "parameters": [
+                          {
+                            "value": [
+                              0.0,
+                              1.0
+                            ],
+                            "controlAddress": "/inputMin_Max"
+                          },
+                          {
+                            "value": [
+                              0.0,
+                              2.0
+                            ],
+                            "controlAddress": "/targetMin_Max"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "parameters": [
+                        {
+                          "value": [
+                            0.0,
+                            1.991689443588257
+                          ],
+                          "controlAddress": "/out"
+                        }
+                      ],
+                      "niceName": "Convert To Point2D",
+                      "type": "Convert To Point2D",
+                      "filterParams": {
+                        "parameters": [
+                          {
+                            "value": "Y",
+                            "controlAddress": "/retargetComponent"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "outputs": {
+                  "items": [
+                    {
+                      "niceName": "MappingOutput",
+                      "type": "BaseItem",
+                      "commandModule": "serial",
+                      "commandPath": "Templates",
+                      "commandType": "Set Position 2D",
+                      "command": {
+                        "parameters": [
+                          {
+                            "value": ",",
+                            "controlAddress": "/separator"
+                          },
+                          {
+                            "value": false,
+                            "controlAddress": "/appendCR"
+                          },
+                          {
+                            "value": true,
+                            "controlAddress": "/appendNL"
+                          }
+                        ],
+                        "argManager": {
+                          "items": [
+                            {
+                              "parameters": [
+                                {
+                                  "value": false,
+                                  "controlAddress": "/useForMapping"
+                                }
+                              ],
+                              "niceName": "#2",
+                              "type": "String"
+                            },
+                            {
+                              "parameters": [
+                                {
+                                  "value": true,
+                                  "controlAddress": "/useForMapping"
+                                }
+                              ],
+                              "niceName": "Position",
+                              "type": "Point2D",
+                              "param": {
+                                "value": [
+                                  0.0,
+                                  1.991689443588257
+                                ],
+                                "controlAddress": "/sequences/sequence/layers/mapping/mapping/outputs/mappingOutput/command/arguments/position/newPoint2DParameter"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "automation0": {
+                "parameters": [
+                  {
+                    "value": 30.0,
+                    "controlAddress": "/length"
+                  },
+                  {
+                    "value": 14.73242378234863,
+                    "controlAddress": "/position"
+                  },
+                  {
+                    "value": 0.9958447217941284,
+                    "controlAddress": "/value"
+                  }
+                ],
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": 0.0,
+                        "controlAddress": "/position"
+                      },
+                      {
+                        "value": 0.01680672168731689,
+                        "controlAddress": "/value"
+                      },
+                      {
+                        "value": "Linear",
+                        "controlAddress": "/easingType"
+                      }
+                    ],
+                    "niceName": "Key 1",
+                    "type": "BaseItem",
+                    "easing": {
+                    }
+                  },
+                  {
+                    "parameters": [
+                      {
+                        "value": 14.79495239257813,
+                        "controlAddress": "/position"
+                      },
+                      {
+                        "value": 1.0,
+                        "controlAddress": "/value"
+                      },
+                      {
+                        "value": "Linear",
+                        "controlAddress": "/easingType"
+                      }
+                    ],
+                    "niceName": "Key",
+                    "type": "BaseItem",
+                    "easing": {
+                    }
+                  },
+                  {
+                    "parameters": [
+                      {
+                        "value": 30.0,
+                        "controlAddress": "/position"
+                      },
+                      {
+                        "value": 0.0,
+                        "controlAddress": "/value"
+                      },
+                      {
+                        "value": "Linear",
+                        "controlAddress": "/easingType"
+                      }
+                    ],
+                    "niceName": "Key 2",
+                    "type": "BaseItem",
+                    "easing": {
+                    }
+                  }
+                ]
+              },
+              "recorder": {
+                "parameters": [
+                  {
+                    "value": false,
+                    "controlAddress": "/isRecording"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "cueManager": {
+        },
+        "editing": true
+      }
+    ]
+  }
+}
