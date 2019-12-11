@@ -7,8 +7,8 @@
 #endif
 
 
-#define USE_WIFI 0
-#define USE_OSC 0
+#define USE_WIFI 1
+#define USE_OSC 1
 #define USE_ETHERNET 0
 #define USE_SERIAL 1
 #define USE_MOTORS 1
@@ -17,7 +17,7 @@
 
 #include <Preferences.h>
 Preferences preferences;
-
+#define PREFS_NAME "farfadet"
 
 #if USE_WIFI
 #include "WiFiManager.h"
@@ -88,14 +88,14 @@ void oscConnectionChanged(bool isConnected)
 
 
 #if USE_SERIAL
-void serialMessageReceived(char command, String val1, String val2)
+void serialMessageReceived(char command, String * values, int numValues)
 {
-
-    #if USE_MOTOR
-    if(motorManager.handleSerialMessage(command, val1, val2)) return;
+   // DBG("Received message : "+String(command));
+    #if USE_MOTORS
+    if(motorManager.handleSerialMessage(command, values, numValues)) return;
     #endif
 
-    DBG("Serial command not handled : "+command);
+    DBG("Serial command not handled : "+String(command));
 }
 #endif
 
@@ -119,9 +119,12 @@ void setup()
   Serial.begin(115200);
   Serial.println("");
 
-  preferences.begin("farfadet-settings", false);
   DeviceSettings::getInstance()->init();
 
+  preferences.begin(PREFS_NAME, false);
+  bool result = preferences.putString("test","ok");
+  String s = preferences.getString("test","failed");
+  DBG("Preferences test : begin = "+String(result)+", test string : "+s);
   
   //WiFi & OSC
 #if USE_WIFI
@@ -161,5 +164,4 @@ void loop()
   #if USE_MOTORS
   motorManager.update();
   #endif
-
 }

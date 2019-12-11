@@ -38,26 +38,45 @@ public:
   void parseBuffer()
   {
     int commaIndex = buffer.indexOf(',');
-    int secondCommaIndex = buffer.indexOf(',', commaIndex + 1);
-    String cc = buffer.substring(0, commaIndex);
-    String v1 = buffer.substring(commaIndex + 1, secondCommaIndex);
-    String v2 = buffer.substring(secondCommaIndex + 1); // To the end of the string
+    char command = buffer.substring(0, commaIndex).charAt(0);
+    
+    String values[16];
+    
+    int valueIndex = 0;
+    int prevCommaIndex = commaIndex;
+    int nextCommaIndex = buffer.indexOf(',', commaIndex + 1);
+    while(nextCommaIndex != -1 && valueIndex < 15)
+    {
+       values[valueIndex] = buffer.substring(prevCommaIndex + 1, nextCommaIndex);
+       valueIndex++;
+      
+       prevCommaIndex = nextCommaIndex;
+       nextCommaIndex = buffer.indexOf(',', nextCommaIndex+1);
+    }
 
-    char command = v1.charAt(0);
 
-    onMessageReceived(command, v1, v2);
+    if(prevCommaIndex != -1)
+    {
+      values[valueIndex] = buffer.substring(prevCommaIndex+1);
+      valueIndex++;
+    }
+
+    
+    DBG("Received buffer, numValues "+String(valueIndex));
+    
+    onMessageReceived(command, values, valueIndex);
 
   }
 
 
-   typedef void(*onEvent)(char, String, String);
-    void (*onMessageReceived) (char command, String val1, String val2);
+   typedef void(*onEvent)(char, String *, int);
+    void (*onMessageReceived) (char command, String * values, int numValues);
 
     void addCallbackMessageReceived (onEvent func) {
       onMessageReceived = func;
     }
   
-    static void defaultCallback(char command, String val1, String val2)
+    static void defaultCallback(char command, String * values, int numValues)
     {
       //nothing
     }

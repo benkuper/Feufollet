@@ -7,14 +7,29 @@
 class Motor
 {
 public:
-  
   TMC5160_UART_Transceiver motor;
-  const double spool_diameter = 0.085; //in meters
-
+  
   int index;
+  double spoolDiameter = 0.085; //in meters
+  
+  double x;
+  double y;
+
+  double targetOffsetX;
+  double targetOffsetY;
+
+  bool invert;
+
+  float targetPosition;
   
   Motor()
   {
+    targetPosition = 0;
+    invert = false;
+    x = 0;
+    y = 0;
+    targetOffsetX = 0;
+    targetOffsetY = 0;
   }
 
   void init(int index, uint8_t rxPin, uint8_t txPin, uint8_t txEnPin, HardwareSerial * port, TMC5160::PowerStageParameters powerStageParams, TMC5160::MotorParameters motorParams)
@@ -25,21 +40,26 @@ public:
     motor = TMC5160_UART_Transceiver(txEnPin, *port, 0);
     motor.begin(powerStageParams, motorParams, TMC5160::NORMAL_MOTOR_DIRECTION);
 
+
+    
     motor.setEncoderResolution(200, 360, false);
-    motor.setAcceleration(metersToSteps(1)); //default value
-    motor.setMaxSpeed(metersToSteps(1)); //default value
   }
 
-  void update()
+  void setup(double _spoolDiameter, float _x, float _y, float _targetOffsetX, float _targetOffsetY, bool _invert)
   {
-    //animate motion here for instance
-    //or send feedback
+    
+    spoolDiameter = _spoolDiameter;
+    x = _x;
+    y = _y;
+    targetOffsetX = _targetOffsetX;
+    targetOffsetY = _targetOffsetY;
+    invert = _invert;
   }
-
 
   void setTargetPosition(float value)
   {
-    motor.setTargetPosition(metersToSteps(value));
+    targetPosition = value;
+    motor.setTargetPosition(metersToSteps(targetPosition));
   }
 
   
@@ -63,10 +83,14 @@ public:
     motor.setRampMode(positionMode? TMC5160::POSITIONING_MODE : TMC5160::VELOCITY_MODE);
   }
 
+  float getRealPosition()
+  {
+    return motor.getCurrentPosition();
+  }
 
   //Helpers
-  float metersToSteps(float m) { return m / (PI * spool_diameter) * 200.0; } //200 steps per turn
-  float stepsToMeters(float steps) { return (steps * PI * spool_diameter) / 200.0; }
+  float metersToSteps(float m) { return m / (PI * spoolDiameter) * 200.0; } //200 steps per turn
+  float stepsToMeters(float steps) { return (steps * PI * spoolDiameter) / 200.0; }
 
 
 #if USE_OSC

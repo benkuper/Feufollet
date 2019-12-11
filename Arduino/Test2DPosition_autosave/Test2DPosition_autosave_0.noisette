@@ -1,0 +1,663 @@
+{
+  "metaData": {
+    "version": "1.6.9",
+    "versionNumber": 67081
+  },
+  "dashboardManager": {
+    "items": [
+      {
+        "niceName": "Dashboard",
+        "type": "BaseItem",
+        "itemManager": {
+          "items": [
+            {
+              "parameters": [
+                {
+                  "value": [
+                    -530.0,
+                    -153.0
+                  ],
+                  "controlAddress": "/viewUIPosition"
+                },
+                {
+                  "value": [
+                    1027.0,
+                    50.0
+                  ],
+                  "controlAddress": "/viewUISize"
+                },
+                {
+                  "value": true,
+                  "controlAddress": "/showLabel"
+                },
+                {
+                  "value": "Horizontal Slider",
+                  "controlAddress": "/style"
+                }
+              ],
+              "niceName": "Dashboard Item",
+              "type": "DashboardParameterItem",
+              "ghostAddress": "/modules/serial/values/motor1",
+              "controllable": "/modules/serial/values/motor1"
+            },
+            {
+              "parameters": [
+                {
+                  "value": [
+                    -530.0,
+                    -93.0
+                  ],
+                  "controlAddress": "/viewUIPosition"
+                },
+                {
+                  "value": [
+                    1020.0,
+                    50.0
+                  ],
+                  "controlAddress": "/viewUISize"
+                },
+                {
+                  "value": "Horizontal Slider",
+                  "controlAddress": "/style"
+                }
+              ],
+              "niceName": "Dashboard Item 1",
+              "type": "DashboardParameterItem",
+              "ghostAddress": "/modules/serial/values/motor0",
+              "controllable": "/modules/serial/values/motor0"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "moduleManager": {
+    "items": [
+      {
+        "niceName": "OSC",
+        "type": "OSC",
+        "scripts": {
+        },
+        "params": {
+          "containers": {
+            "oscInput": {
+            },
+            "oscOutputs": {
+              "items": [
+                {
+                  "parameters": [
+                    {
+                      "value": false,
+                      "controlAddress": "/local"
+                    },
+                    {
+                      "value": "192.168.1.118",
+                      "controlAddress": "/remoteHost"
+                    },
+                    {
+                      "value": 8888,
+                      "hexMode": false,
+                      "controlAddress": "/remotePort"
+                    }
+                  ],
+                  "niceName": "OSC Output",
+                  "type": "BaseItem"
+                }
+              ]
+            }
+          }
+        },
+        "templates": {
+          "items": [
+            {
+              "niceName": "Custom Message",
+              "type": "BaseItem",
+              "menuPath": "",
+              "commandType": "Custom Message",
+              "customValues": {
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": true,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "Force",
+                    "type": "Float",
+                    "param": {
+                      "value": 100.0,
+                      "controlAddress": "/modules/osc/templates/customMessage/arguments/force/_1",
+                      "type": "Float",
+                      "niceName": "#1",
+                      "customizable": true,
+                      "removable": false,
+                      "description": "Argument #1, type float",
+                      "hideInEditor": true,
+                      "feedbackOnly": false
+                    }
+                  },
+                  {
+                    "parameters": [
+                      {
+                        "value": false,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "Friction",
+                    "type": "Float",
+                    "param": {
+                      "value": 30.0,
+                      "controlAddress": "/modules/osc/templates/customMessage/arguments/friction/_2",
+                      "type": "Float",
+                      "niceName": "#2",
+                      "customizable": true,
+                      "removable": false,
+                      "description": "Argument #2, type float",
+                      "hideInEditor": true,
+                      "feedbackOnly": false
+                    }
+                  }
+                ]
+              },
+              "params": [
+                {
+                  "parameters": [
+                    {
+                      "value": "/motor/setPhysics",
+                      "controlAddress": "/address"
+                    },
+                    {
+                      "value": true,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Address"
+                }
+              ]
+            },
+            {
+              "parameters": [
+                {
+                  "value": [
+                    20.0,
+                    20.0
+                  ],
+                  "controlAddress": "/viewUIPosition"
+                }
+              ],
+              "niceName": "Custom Message 1",
+              "type": "BaseItem",
+              "menuPath": "",
+              "commandType": "Custom Message",
+              "customValues": {
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": true,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "#1",
+                    "type": "Point2D",
+                    "param": {
+                      "value": [
+                        3.0,
+                        2.0
+                      ],
+                      "minValue": [
+                        -2.147483648e9,
+                        -2.147483648e9
+                      ],
+                      "maxValue": [
+                        2.147483648e9,
+                        2.147483648e9
+                      ],
+                      "controlAddress": "/modules/osc/templates/customMessage1/arguments/_1/_1",
+                      "type": "Point2D",
+                      "niceName": "#1",
+                      "customizable": true,
+                      "removable": false,
+                      "description": "Argument #1, type 2D",
+                      "hideInEditor": true,
+                      "feedbackOnly": false
+                    }
+                  }
+                ]
+              },
+              "params": [
+                {
+                  "parameters": [
+                    {
+                      "value": "/motor/setPosition2D",
+                      "controlAddress": "/address"
+                    },
+                    {
+                      "value": true,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Address"
+                }
+              ]
+            },
+            {
+              "parameters": [
+                {
+                  "value": [
+                    40.0,
+                    40.0
+                  ],
+                  "controlAddress": "/viewUIPosition"
+                }
+              ],
+              "niceName": "Custom Message 2",
+              "type": "BaseItem",
+              "menuPath": "",
+              "commandType": "Custom Message",
+              "customValues": {
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": true,
+                        "controlAddress": "/useForMapping"
+                      }
+                    ],
+                    "niceName": "#1",
+                    "type": "Point2D",
+                    "param": {
+                      "value": [
+                        -3.0,
+                        2.0
+                      ],
+                      "minValue": [
+                        -2.147483648e9,
+                        -2.147483648e9
+                      ],
+                      "maxValue": [
+                        2.147483648e9,
+                        2.147483648e9
+                      ],
+                      "controlAddress": "/modules/osc/templates/customMessage2/arguments/_1/newPoint2DParameter",
+                      "type": "Point2D",
+                      "niceName": "New Point2D Parameter",
+                      "customizable": true,
+                      "removable": false,
+                      "description": "",
+                      "hideInEditor": true,
+                      "feedbackOnly": false
+                    }
+                  }
+                ]
+              },
+              "params": [
+                {
+                  "parameters": [
+                    {
+                      "value": "/motor/setPosition2D",
+                      "controlAddress": "/address"
+                    },
+                    {
+                      "value": true,
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "controlAddress": "/editable",
+                      "type": "Boolean",
+                      "niceName": "Editable",
+                      "customizable": false,
+                      "removable": false,
+                      "description": "If enabled, the parameter will be editable when instantiating this template",
+                      "hideInEditor": false,
+                      "feedbackOnly": false
+                    }
+                  ],
+                  "niceName": "Address"
+                }
+              ]
+            }
+          ]
+        },
+        "values": {
+        },
+        "input": {
+        },
+        "outputs": {
+          "items": [
+            {
+              "parameters": [
+                {
+                  "value": false,
+                  "controlAddress": "/local"
+                },
+                {
+                  "value": "192.168.1.118",
+                  "controlAddress": "/remoteHost"
+                },
+                {
+                  "value": 8888,
+                  "hexMode": false,
+                  "controlAddress": "/remotePort"
+                }
+              ],
+              "niceName": "OSC Output",
+              "type": "BaseItem"
+            }
+          ]
+        }
+      },
+      {
+        "parameters": [
+          {
+            "value": true,
+            "controlAddress": "/enabled"
+          }
+        ],
+        "niceName": "Serial",
+        "type": "Serial",
+        "scripts": {
+        },
+        "params": {
+          "parameters": [
+            {
+              "value": false,
+              "controlAddress": "/autoAdd"
+            },
+            {
+              "value": "Space separated",
+              "controlAddress": "/messageStructure"
+            },
+            {
+              "value": true,
+              "controlAddress": "/firstValueIsTheName"
+            },
+            {
+              "value": "USB-SERIAL CH340 (COM18)",
+              "controlAddress": "/port"
+            },
+            {
+              "value": 115200,
+              "hexMode": false,
+              "controlAddress": "/baudRate"
+            }
+          ]
+        },
+        "values": {
+          "parameters": [
+            {
+              "value": 2.0,
+              "minValue": 0.0,
+              "maxValue": 6.0,
+              "controlAddress": "/motor1",
+              "type": "Float",
+              "niceName": "Motor1",
+              "customizable": true,
+              "removable": true,
+              "description": "Motor1",
+              "hideInEditor": false,
+              "feedbackOnly": false
+            },
+            {
+              "value": 6.269999980926514,
+              "minValue": 0.0,
+              "maxValue": 610.0,
+              "controlAddress": "/motor0",
+              "type": "Float",
+              "niceName": "Motor0",
+              "customizable": true,
+              "removable": true,
+              "description": "Motor0",
+              "hideInEditor": false,
+              "feedbackOnly": false
+            }
+          ]
+        },
+        "portID": "USB-SERIAL CH340 (COM18)"
+      }
+    ]
+  },
+  "stateManager": {
+    "items": [
+      {
+        "parameters": [
+          {
+            "value": [
+              -130.0,
+              -117.0
+            ],
+            "controlAddress": "/viewUIPosition"
+          },
+          {
+            "value": true,
+            "controlAddress": "/active"
+          }
+        ],
+        "niceName": "State",
+        "type": "State"
+      }
+    ]
+  },
+  "sequenceManager": {
+    "items": [
+      {
+        "parameters": [
+          {
+            "value": 5.0,
+            "controlAddress": "/listSize"
+          },
+          {
+            "value": 5,
+            "hexMode": false,
+            "controlAddress": "/fps"
+          }
+        ],
+        "niceName": "Sequence",
+        "type": "BaseItem",
+        "layerManager": {
+          "items": [
+            {
+              "parameters": [
+                {
+                  "value": 88.0,
+                  "controlAddress": "/listSize"
+                },
+                {
+                  "value": 120,
+                  "hexMode": false,
+                  "controlAddress": "/uiHeight"
+                },
+                {
+                  "value": [
+                    0.2117647081613541,
+                    0.2117647081613541,
+                    0.2117647081613541,
+                    1.0
+                  ],
+                  "controlAddress": "/layerColor"
+                },
+                {
+                  "value": 1.0,
+                  "controlAddress": "/value"
+                }
+              ],
+              "niceName": "Mapping",
+              "type": "Mapping",
+              "mapping": {
+                "parameters": [
+                  {
+                    "value": 3.0,
+                    "controlAddress": "/outValue"
+                  }
+                ],
+                "niceName": "Mapping",
+                "type": "Mapping",
+                "input": {
+                  "parameters": [
+                    {
+                      "value": "",
+                      "controlAddress": "/inputValue"
+                    }
+                  ]
+                },
+                "filters": {
+                  "items": [
+                    {
+                      "parameters": [
+                        {
+                          "value": 3.0,
+                          "controlAddress": "/out"
+                        }
+                      ],
+                      "niceName": "Remap",
+                      "type": "Remap",
+                      "filterParams": {
+                        "parameters": [
+                          {
+                            "value": [
+                              0.0,
+                              1.0
+                            ],
+                            "controlAddress": "/inputMin_Max"
+                          },
+                          {
+                            "value": [
+                              -3.0,
+                              3.0
+                            ],
+                            "controlAddress": "/targetMin_Max"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "outputs": {
+                  "items": [
+                    {
+                      "niceName": "MappingOutput",
+                      "type": "BaseItem",
+                      "commandModule": "osc",
+                      "commandPath": "Templates",
+                      "commandType": "Custom Message 1",
+                      "command": {
+                        "argManager": {
+                          "items": [
+                            {
+                              "parameters": [
+                                {
+                                  "value": true,
+                                  "controlAddress": "/useForMapping"
+                                }
+                              ],
+                              "niceName": "#1",
+                              "type": "Point2D",
+                              "param": {
+                                "value": [
+                                  3.0,
+                                  0.0
+                                ],
+                                "controlAddress": "/sequences/sequence/layers/mapping/mapping/outputs/mappingOutput/command/arguments/_1/_1"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "automation0": {
+                "parameters": [
+                  {
+                    "value": 30.0,
+                    "controlAddress": "/length"
+                  },
+                  {
+                    "value": 30.0,
+                    "controlAddress": "/position"
+                  },
+                  {
+                    "value": 1.0,
+                    "controlAddress": "/value"
+                  }
+                ],
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": 0.0,
+                        "controlAddress": "/position"
+                      },
+                      {
+                        "value": 0.0,
+                        "controlAddress": "/value"
+                      },
+                      {
+                        "value": "Linear",
+                        "controlAddress": "/easingType"
+                      }
+                    ],
+                    "niceName": "Key",
+                    "type": "BaseItem",
+                    "easing": {
+                    }
+                  },
+                  {
+                    "parameters": [
+                      {
+                        "value": 29.74137878417969,
+                        "controlAddress": "/position"
+                      },
+                      {
+                        "value": 1.0,
+                        "controlAddress": "/value"
+                      },
+                      {
+                        "value": "Linear",
+                        "controlAddress": "/easingType"
+                      }
+                    ],
+                    "niceName": "Key 1",
+                    "type": "BaseItem",
+                    "easing": {
+                    }
+                  }
+                ]
+              },
+              "recorder": {
+                "parameters": [
+                  {
+                    "value": false,
+                    "controlAddress": "/isRecording"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "cueManager": {
+        },
+        "editing": true
+      }
+    ]
+  }
+}

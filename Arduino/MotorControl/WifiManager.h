@@ -41,8 +41,8 @@ class WiFiManager
     void init(bool silentMode = false, bool apModeIfFail = true)
     {
       DBG("WiFiManager init.");
-      ssid = preferences.getString("wifiSSID", "jonglissimo");
-      password = preferences.getString("wifiPassword", "lightpainting");
+      ssid = preferences.getString("wifiSSID", "THEORIZ");
+      password = preferences.getString("wifiPassword", "toimonlapin");
 
       DBG(String("WiFiManager connecting to " + ssid + " : " + password));
       

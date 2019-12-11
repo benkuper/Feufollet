@@ -13,7 +13,7 @@ class EthernetManager :
 
     EthernetManager()
     {
-
+      
     }
 
     void init()
